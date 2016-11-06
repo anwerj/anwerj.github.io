@@ -1,0 +1,37 @@
+<h1 id="views">Views</h1>
+
+<p>Views are actually the queries which you hate to write. You can write views based on your collection, your primary keys or just for one single value to search for.</p>
+
+<p>MyMongoView has its own structure for views which could be <code>js|json</code> file.    </p>
+
+<p><strong>Views Parameters :</strong></p>
+
+<p><em>name</em> : Name of the view to remember by (again kind of important) <br>
+<em>collection</em> : You can set a default collection to view. If set, it will query right when you open view, otherwise it will ask you to select a collection. <br>
+<em>prompt</em> : Perhaps the most important feature of MyMongoView. Here you defines your query.</p>
+
+<blockquote>
+  <p><strong>Prompt</strong> is an object having collection fields as keys and operations + dataType as value.    </p>
+</blockquote>
+
+<p>A sample view</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">module.exports = {
+
+    name : <span class="hljs-string">'Orders'</span>,
+    collection : <span class="hljs-string">'orders'</span>,
+
+    prompt : {
+        buyer_id : {},
+        order_status : { operators : { eq : <span class="hljs-string">''</span>, gt : <span class="hljs-string">''</span> } },
+        status : { dataType : <span class="hljs-string">'number'</span> }
+    },
+
+    join : {
+        items : {on : <span class="hljs-string">'parent'</span>, from : <span class="hljs-string">'_id'</span>},
+        buyers : {on : <span class="hljs-string">'buyer_id'</span>, from : <span class="hljs-string">'_id'</span>}
+    }
+
+};</code></pre>
