@@ -10,19 +10,19 @@
 
             // route for the home page
             .when('/', {
-                templateUrl : 'mymongoview/pages/home.html',
+                templateUrl : '/mymongoview/pages/home.html',
                 controller  : 'mainController'
             })
 
             // route for the about page
             .when('/views', {
-                templateUrl : 'mymongoview/pages/views.html',
+                templateUrl : '/mymongoview/pages/views.html',
                 controller  : 'viewsController'
             })
 
             // route for the contact page
             .when('/others', {
-                templateUrl : 'mymongoview/pages/others.html',
+                templateUrl : '/mymongoview/pages/others.html',
                 controller  : 'othersController'
             });
     });
