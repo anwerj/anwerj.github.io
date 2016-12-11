@@ -16,6 +16,11 @@ body{
     background: #069257;
     color: white;
 }
+.navbar-brand{
+    background: url(/mymongoview/images/logo.png) no-repeat;
+    background-size: auto 100%;
+    padding-left: 48px;
+}
 .center{
     text-align: center;
 }
