@@ -1,0 +1,83 @@
+body{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 2rem;
+    background: rgb(251, 251, 251);
+}
+.navbar-mmv{
+    background-color: #16BB8F;
+    border-radius: 0px;
+    border-bottom: 1px solid #069257;
+    margin-bottom: 0px;
+}
+.navbar-mmv a{
+    color: white;
+}
+.navbar-mmv .nav>li>a:hover, .navbar-mmv .nav>li>a:focus, .navbar-mmv .nav>li>a:active {
+    background: #069257;
+    color: white;
+}
+.center{
+    text-align: center;
+}
+.head{
+    font-size: 3rem;
+}
+h1,h2,h3{
+    color: #069257;
+}
+h4,h5,h6{
+    color: #16BB8F;
+}
+.colpat1{
+    color: #069257;
+}
+.colpat2{
+    color: #16BB8F;
+}
+
+#main{
+}
+#main p{
+    color: #888;
+}
+#main pre{
+    background: #fefefe;
+}
+#main blockquote{
+    border-left-color: #069257;
+    background: #ebf1ef;
+}
+.pholder{
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    position: relative;
+    padding: 10px;
+}
+.slideset{
+}
+.slideset:hover .head i{
+    font-weight: bold;
+}
+.pholder p{
+    position: absolute;
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 0px 6px 4px rgba(0,40,40,0.2);
+}
+.pholder p img{
+    max-height: 700px;
+    border: 5px solid white;
+}
+.pholder p.p1{
+    left: 45%;
+    top: 20px;
+    transition: all 1s;
+}
+.pholder p.p1:hover{
+    left: 15%;
+    top: 40px;
+}

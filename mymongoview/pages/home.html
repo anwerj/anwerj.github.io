@@ -1,129 +1,139 @@
-<h1 id="mymongoview">MyMongoView</h1>
+<div class="">
+    <h1 id="mymongoview" class="">MyMongoView</h1>
 
-<p>MyMongoView provides easy, customizable views to query MongoDB. And above all that it gives most informative and beautiful approach to your MongoDB Document.</p>
+    <p>MyMongoView provides easy, customizable views to query MongoDB. And above all that it gives most informative and beautiful approach to your MongoDB Document.</p>
+    <div class="slideset">
+        <div class="head center colpat1">
+            MMV converts mainstream <i>prettified</i> view to your documents into <i>beautified</i>, <i>detailed</i> and <i>interactive</i> page with clickable fields to quick search with.
+        </div>
+        <div class="pholder">
+            <p class="p0">
+                <img class="img-responsive img-" src="/mymongoview/images/prettified.png">
+            </p>
+            <p class="p1">
+                <img class="img-responsive img-" src="/mymongoview/images/beautified.png">
+            </p>
+        </div>
+    </div>
+    <h3 id="installation">Installation</h3>
 
-<p>
-    <img class="img-responsive img-thumbnail" src="/mymongoview/images/first_con.png">
-</p>
+    <p>Install MyMongoView with npm, create a directory and run given command from that directory.</p>
 
-<h3 id="installation">Installation</h3>
+    <pre class="prettyprint"><code class="language-bash hljs ">npm install my-mongo-view</code></pre>
 
-<p>Install MyMongoView with npm, create a directory and run given command from that directory.</p>
+    <p>Now, if you are installing it first time, Copy file sample.config.json to config.json</p>
 
-<pre class="prettyprint"><code class="language-bash hljs ">npm install my-mongo-view</code></pre>
+    <pre class="prettyprint"><code class="language-bash hljs ">cp sample.config.json config.json</code></pre>
 
-<p>Now, if you are installing it first time, Copy file sample.config.json to config.json</p>
+    <p>Setup your MongoDB Connections from <code>config.json</code> file. There is a default connection with default views. <br>
+    Just change connections.string to your MongoDB instance.    </p>
 
-<pre class="prettyprint"><code class="language-bash hljs ">cp sample.config.json config.json</code></pre>
+    <blockquote>
+      <p>You can also add multiple connections.</p>
+    </blockquote>
 
-<p>Setup your MongoDB Connections from <code>config.json</code> file. There is a default connection with default views. <br>
-Just change connections.string to your MongoDB instance.    </p>
+    <p><strong>Connection Parameters :</strong></p>
 
-<blockquote>
-  <p>You can also add multiple connections.</p>
-</blockquote>
+    <p><em>name</em> : Name of the connection to remember by (kind of important) <br>
+    <em>string</em> : Complete path to your MongoDB instances. (You can use authentication in string itself).    </p>
 
-<p><strong>Connection Parameters :</strong></p>
+    <blockquote>
+      <p><code>"string" : "mongodb://username:password@host/database"</code></p>
+    </blockquote>
 
-<p><em>name</em> : Name of the connection to remember by (kind of important) <br>
-<em>string</em> : Complete path to your MongoDB instances. (You can use authentication in string itself).    </p>
+    <p><em>container</em> : Name to the directory where your views and cache are saved.    </p>
 
-<blockquote>
-  <p><code>"string" : "mongodb://username:password@host/database"</code></p>
-</blockquote>
+    <blockquote>
+      <p>You can have multiple container, ideally a container belongs to one database. You can use same container for different environments. <br>
+      A container must have two writable directories, <strong>views</strong> and <strong>cache.</strong></p>
+    </blockquote>
 
-<p><em>container</em> : Name to the directory where your views and cache are saved.    </p>
-
-<blockquote>
-  <p>You can have multiple container, ideally a container belongs to one database. You can use same container for different environments. <br>
-  A container must have two writable directories, <strong>views</strong> and <strong>cache.</strong></p>
-</blockquote>
-
-<p><em>config</em> and <em>options</em> fields are not yet it used. <br>
-</p>
-
-
-
-<h3 id="views">Views</h3>
-
-<p>Views are actually the queries which you hate to write. You can write views based on your collection, your primary keys or just for one single value to search for.</p>
-
-<p>MyMongoView has its own structure for views which could be <code>js|json</code> file.    </p>
-
-<p><strong>Views Parameters :</strong></p>
-
-<p><em>name</em> : Name of the view to remember by (again kind of important) <br>
-<em>collection</em> : You can set a default collection to view. If set, it will query right when you open view, otherwise it will ask you to select a collection. <br>
-<em>prompt</em> : Perhaps the most important feature of MyMongoView. Here you defines your query.</p>
-
-<blockquote>
-  <p><strong>Prompt</strong> is an object having collection fields as keys and operations + dataType as value.    </p>
-</blockquote>
-
-<p>A sample view</p>
+    <p><em>config</em> and <em>options</em> fields are not yet it used. <br>
+    </p>
 
 
 
-<pre class="prettyprint"><code class="language-js hljs ">module.exports = {
+    <h3 id="views">Views</h3>
 
-    name : <span class="hljs-string">'Orders'</span>,
-    collection : <span class="hljs-string">'orders'</span>,
+    <p>Views are actually the queries which you hate to write. You can write views based on your collection, your primary keys or just for one single value to search for.</p>
 
-    prompt : {
-        buyer_id : {},
-        order_status : { operators : { eq : <span class="hljs-string">''</span>, gt : <span class="hljs-string">''</span> } },
-        status : { dataType : <span class="hljs-string">'number'</span> }
-    },
+    <p>MyMongoView has its own structure for views which could be <code>js|json</code> file.    </p>
 
-    join : {
-        items : {on : <span class="hljs-string">'parent'</span>, from : <span class="hljs-string">'_id'</span>},
-        buyers : {on : <span class="hljs-string">'buyer_id'</span>, from : <span class="hljs-string">'_id'</span>}
-    }
+    <p><strong>Views Parameters :</strong></p>
 
-};</code></pre>
+    <p><em>name</em> : Name of the view to remember by (again kind of important) <br>
+    <em>collection</em> : You can set a default collection to view. If set, it will query right when you open view, otherwise it will ask you to select a collection. <br>
+    <em>prompt</em> : Perhaps the most important feature of MyMongoView. Here you defines your query.</p>
 
-<blockquote>
-  <p><strong>Default values for  operator is <em>eq</em> and dataType is <em>string</em>.</strong></p>
-</blockquote>
+    <blockquote>
+      <p><strong>Prompt</strong> is an object having collection fields as keys and operations + dataType as value.    </p>
+    </blockquote>
 
-<p>You can read more about prompts here</p>
-
-<blockquote>
-  <p>MyMongoView will return actual query with the result so that you don’t get out of touch</p>
-</blockquote>
-
-<p></p>
+    <p>A sample view</p>
 
 
 
-<h3 id="actions">Actions</h3>
+    <pre class="prettyprint"><code class="language-js hljs ">module.exports = {
 
-<p>Currently MyMongoView supports three actions find, aggregate and distinct. Every action comes with its own set of fields.</p>
+        name : <span class="hljs-string">'Orders'</span>,
+        collection : <span class="hljs-string">'orders'</span>,
 
-<p></p>
+        prompt : {
+            buyer_id : {},
+            order_status : { operators : { eq : <span class="hljs-string">''</span>, gt : <span class="hljs-string">''</span> } },
+            status : { dataType : <span class="hljs-string">'number'</span> }
+        },
+
+        join : {
+            items : {on : <span class="hljs-string">'parent'</span>, from : <span class="hljs-string">'_id'</span>},
+            buyers : {on : <span class="hljs-string">'buyer_id'</span>, from : <span class="hljs-string">'_id'</span>}
+        }
+
+    };</code></pre>
+
+    <blockquote>
+      <p><strong>Default values for  operator is <em>eq</em> and dataType is <em>string</em>.</strong></p>
+    </blockquote>
+
+    <p>You can read more about prompts here</p>
+
+    <blockquote>
+      <p>MyMongoView will return actual query with the result so that you don’t get out of touch</p>
+    </blockquote>
+
+    <p></p>
 
 
 
-<h4 id="find">Find</h4>
+    <h3 id="actions">Actions</h3>
 
-<p>Find actions accepts all filters and sort options.</p>
+    <p>Currently MyMongoView supports three actions find, aggregate and distinct. Every action comes with its own set of fields.</p>
 
-<p></p>
-
-
-
-<h4 id="aggregate">Aggregate</h4>
-
-<p>Other that just filters and sort options, you will be asked for aggregate related fields like <script type="math/tex" id="MathJax-Element-1">group and </script>accumulator.</p>
-
-<p></p>
+    <p></p>
 
 
 
-<h4 id="distinct">Distinct</h4>
+    <h4 id="find">Find</h4>
 
-<p>This action will ask for key to find distinct values for. Remember it does not have limit so use vary carefully.</p>
+    <p>Find actions accepts all filters and sort options.</p>
 
-<p class="row-fluid">
-    <img class="span6 img-responsive img-thumbnail" src="/mymongoview/images/third_det.png">
-</p>
+    <p></p>
+
+
+
+    <h4 id="aggregate">Aggregate</h4>
+
+    <p>Other that just filters and sort options, you will be asked for aggregate related fields like <script type="math/tex" id="MathJax-Element-1">group and </script>accumulator.</p>
+
+    <p></p>
+
+
+
+    <h4 id="distinct">Distinct</h4>
+
+    <p>This action will ask for key to find distinct values for. Remember it does not have limit so use vary carefully.</p>
+
+    <p class="row-fluid">
+        <img class="span6 img-responsive img-thumbnail" src="/mymongoview/images/third_det.png">
+    </p>
+</div>
