@@ -15,9 +15,132 @@
             display: inline-block;
             text-decoration: none;
         }
+        fieldset{
+            border: 1px solid #2ab27b;
+            margin: 0 0 10px 0;
+            font-weight: bold;
+            color: #667766;
+        }
+        .inputtext {
+            width: 100%;
+            padding: 5px;
+            height: 20px;
+            border: none;
+        }
+        .inputsubmit {
+            width: 100%;
+            padding: 5px;
+            height: 40px;
+            background: #1b73d6;
+            font-size: 18px;
+            color: #fff;
+            border-radius: 3px;
+            border: 1px solid #d3d3d3;
+        }
+        .do-not-include
+        {
+            background: #eee;
+        }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-<a href="upi://pay?pa=anwerj@hdfcbank1&pn=Junaid+Anwer&tr=RZP123123&tn=RazorpayOrderID&am=1&cu=INR&mc=5411">Click me if you want</a>
+
+<div style="margin: 40px; border: 1px solid #eee;padding: 40px; text-align: center">
+    <a id="intent" href="upi://pay?">
+        Have Fun
+    </a>
+</div>
+
+<form method="get" style="margin: 40px; border: 1px solid #eee;padding: 40px" onsubmit="generateUrl(this)">
+
+    <fieldset>
+        <legend>pa <small>( Payee Address ) *</small></legend>
+        <input class="inputtext do-not-include" type="text" name="pa" value="anwerj@hdfcbankrzp" required>
+    </fieldset>
+
+    <fieldset>
+        <legend>pn <small>( Payee Name ) *</small></legend>
+        <input class="inputtext do-not-include" type="text" name="pn" value="Test Account" required>
+    </fieldset>
+
+    <fieldset>
+        <legend>tr <small>( Txn Reference ID ) *</small></legend>
+        <input class="inputtext do-not-include" type="text" name="tr" value="RefId" required>
+    </fieldset>
+
+    <fieldset>
+        <legend>tid <small>( Txn ID )</small></legend>
+        <input class="inputtext do-not-include" type="text" name="tid" value="txnId">
+    </fieldset>
+
+    <fieldset>
+        <legend>tn <small>( Txn Notes )</small></legend>
+        <input class="inputtext do-not-include" type="text" name="tn" value="Notes">
+    </fieldset>
+
+    <fieldset>
+        <legend>am <small>( Amount ) *</small></legend>
+        <input class="inputtext do-not-include" type="text" name="am" value="1" required>
+    </fieldset>
+
+    <fieldset>
+        <legend>mam <small>( Minimum Amount )</small></legend>
+        <input class="inputtext do-not-include" type="text" name="mam" value="1">
+    </fieldset>
+
+    <fieldset>
+        <legend>cu <small>( Currency )</small></legend>
+        <input class="inputtext do-not-include" type="text" name="cu" value="INR">
+    </fieldset>
+
+    <fieldset>
+        <legend>mc <small>( Merchant Code )</small></legend>
+        <input class="inputtext do-not-include" type="text" name="mc" value="5411">
+    </fieldset>
+
+    <fieldset>
+        <legend>Submit</legend>
+        <input class="inputsubmit" type="submit" value="submit">
+    </fieldset>
+</form>
+
+<script type="text/javascript">
+    var urlParams;
+    (window.onpopstate = function () {
+        var match,
+            pl     = /\+/g,  // Regex for replacing addition symbol with a space
+            search = /([^&=]+)=?([^&]*)/g,
+            decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+            query  = window.location.search.substring(1),
+            value  = null;
+
+        urlParams = {};
+
+        while (match = search.exec(query))
+        {
+            value = decode(match[2]).trim();
+            if (value !== '')
+                urlParams[decode(match[1])] = value;
+        }
+
+        document.getElementById('intent').href = 'upi://pay?'+query;
+        document.getElementById('intent').innerText = query;
+    })();
+
+    $(document).ready(function ()
+    {
+        var elem;
+        for(var i in urlParams)
+        {
+            $('input[name="'+i+'"]').val(urlParams[i]).removeClass('do-not-include');
+        }
+        $('.do-not-include').attr('disabled', 'disabled');
+        $('fieldset').click(function () {
+            $(this).find('.do-not-include').removeClass('do-not-include').removeAttr('disabled');
+        })
+    })
+
+    </script>
 </body>
 </html>
