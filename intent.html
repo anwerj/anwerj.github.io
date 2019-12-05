@@ -2,144 +2,284 @@
 <html>
 <head>
     <title>Have Fun</title>
+    <link rel="icon" href="favicon.png" type="image/png" sizes="16x16">
     <style type="text/css">
         a {
             font-family: sans-serif;
             font-size: 18px;
             color: #fff;
-            border: 1px solid #d3d3d3;
-            background: #1b73d6;
+            border: 1px solid #67b696;
+            background: #248f65;
             padding: 8px 12px;
             border-radius: 3px;
             display: inline-block;
             text-decoration: none;
         }
+        #theformfields{
+            float: left;
+        }
         fieldset{
-            border: 1px solid #2ab27b;
-            margin: 0 0 10px 0;
+            border: 1px solid #a9e1ca;
+            margin: 0 1% 10px 1%;
             font-weight: bold;
             color: #667766;
+            font-size: 18px;
+            width: 44.99%;
+            border-radius: 8px;
+            float: left;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        fieldset.full{
+            width: 93.98%;
+        }
+        fieldset sup{
+            font-weight: normal;
+            font-size: small;
+            float: right;
         }
         .inputtext {
-            width: 100%;
+            width: 99%;
             padding: 5px;
             height: 20px;
             border: none;
+            border-radius: 4px;
+            font-weight: bold;
         }
         .inputsubmit {
             width: 100%;
             padding: 5px;
             height: 40px;
-            background: #1b73d6;
+            background: #248f65;
             font-size: 18px;
             color: #fff;
-            border-radius: 3px;
-            border: 1px solid #d3d3d3;
+            border-radius: 4px;
+            border: 1px solid #67b696;
         }
         .do-not-include
         {
-            background: #eee;
+            background: #ddeeea;
+            font-weight: normal;
+        }
+        .display{
+            margin: 40px;
+            padding: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .display #thepsps{
+            font-size: 16px;
+            padding: 5px;
+            height: 40px;
+            border: none;
+            font-weight: bold;
+            color: #00562F;
+        }
+        .display #intent{
+            font-size: 18px;
+            padding: 5px;
+            height: 40px;
+            text-align: center;
+            color: #00683c;
+        }
+        #theimage{
+            margin: 10px 0 10px 0;
+            border: 1px solid #258f65;
+            padding: 5px;
+            width: 250px;
+            height: 250px;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" >
+        var inconf = {
+            psps : {
+                'upi' : {
+                    pro : 'upi://pay',
+                    tex : 'UPI - Native'
+                },
+                'phonepe' : {
+                    pro : 'phonepe://pay',
+                    tex : 'Phonepe - Deep'
+                },
+                'gpay' : {
+                    pro : 'tez://upi/pay',
+                    tex : 'Google Pay - Deep',
+                }
+            },
+            fields : {
+                pa : {
+                    sub: 'VPA of the payee',
+                    cla : 'inputtext do-not-include',
+                    val : 'anwerj@upi',
+                    html : 'required',
+                },
+                pn : {
+                    sub: 'Name associated with Payer VPA',
+                    cla : 'inputtext do-not-include',
+                    val : 'Junaid Anwer',
+                    html : 'required',
+                },
+                tr : {
+                    sub: ' Transaction reference for Payee',
+                    cla : 'inputtext do-not-include',
+                    val : 'RefId',
+                    html : 'required',
+                },
+                tid : {
+                    sub: 'NPCI Transaction id assigned from Payee PSP',
+                    cla : 'inputtext do-not-include',
+                    val : 'UPIxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    html : '',
+                },
+                tn : {
+                    sub: 'Brief details on transaction',
+                    cla : 'inputtext do-not-include',
+                    val : 'anwerj@upi',
+                    html : '',
+                },
+                am : {
+                    sub: 'Amount for transaction in Rupees',
+                    cla : 'inputtext do-not-include',
+                    val : '1.00',
+                    html : 'required',
+                },
+                mam : {
+                    sub: 'Minimum allowed amount for merchant',
+                    cla : 'inputtext do-not-include',
+                    val : '1.00',
+                    html : '',
+                },
+                cu : {
+                    sub: 'Currency - Only INR',
+                    cla : 'inputtext do-not-include',
+                    val : 'INR',
+                    html : '',
+                },
+                mc : {
+                    sub: 'Merchant category code provided by NPCI',
+                    cla : 'inputtext do-not-include',
+                    val : '5411',
+                    html : '',
+                },
+                url : {
+                    sub: 'Short URL to invoice for transaction',
+                    cla : 'inputtext do-not-include',
+                    val : 'https://github.com',
+                    html : '',
+                }
+            }
+        };
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 </head>
 <body>
 
-<div style="margin: 40px; border: 1px solid #eee;padding: 40px; text-align: center">
-    <a id="intent" href="upi://pay?">
-        Have Fun
-    </a>
+<div class="display">
+    <select id="thepsps" class="" onchange="selectThePsp(this)"></select><br>
+    <img id="theimage" src=""><br>
+    <input id="intent" type="text" class="inputtext urlbox" aria-label="Text input with dropdown button"><br>
+    <a id="thelink">Fire me Now!</a>
 </div>
 
-<form method="get" style="margin: 40px; border: 1px solid #eee;padding: 40px" onsubmit="generateUrl(this)">
+<form action="intent.html" id="theform" method="get" style="margin: 40px;padding: 20px; float: left">
+    <div id="theformfields"></div>
 
-    <fieldset>
-        <legend>pa <small>( Payee Address ) *</small></legend>
-        <input class="inputtext do-not-include" type="text" name="pa" value="anwerj@hdfcbankrzp" required>
-    </fieldset>
-
-    <fieldset>
-        <legend>pn <small>( Payee Name ) *</small></legend>
-        <input class="inputtext do-not-include" type="text" name="pn" value="Test Account" required>
-    </fieldset>
-
-    <fieldset>
-        <legend>tr <small>( Txn Reference ID ) *</small></legend>
-        <input class="inputtext do-not-include" type="text" name="tr" value="RefId" required>
-    </fieldset>
-
-    <fieldset>
-        <legend>tid <small>( Txn ID )</small></legend>
-        <input class="inputtext do-not-include" type="text" name="tid" value="txnId">
-    </fieldset>
-
-    <fieldset>
-        <legend>tn <small>( Txn Notes )</small></legend>
-        <input class="inputtext do-not-include" type="text" name="tn" value="Notes">
-    </fieldset>
-
-    <fieldset>
-        <legend>am <small>( Amount ) *</small></legend>
-        <input class="inputtext do-not-include" type="text" name="am" value="1" required>
-    </fieldset>
-
-    <fieldset>
-        <legend>mam <small>( Minimum Amount )</small></legend>
-        <input class="inputtext do-not-include" type="text" name="mam" value="1">
-    </fieldset>
-
-    <fieldset>
-        <legend>cu <small>( Currency )</small></legend>
-        <input class="inputtext do-not-include" type="text" name="cu" value="INR">
-    </fieldset>
-
-    <fieldset>
-        <legend>mc <small>( Merchant Code )</small></legend>
-        <input class="inputtext do-not-include" type="text" name="mc" value="5411">
-    </fieldset>
-
-    <fieldset>
+    <fieldset class="full">
         <legend>Submit</legend>
         <input class="inputsubmit" type="submit" value="submit">
     </fieldset>
 </form>
 
 <script type="text/javascript">
-    var urlParams;
-    (window.onpopstate = function () {
-        var match,
-            pl     = /\+/g,  // Regex for replacing addition symbol with a space
-            search = /([^&=]+)=?([^&]*)/g,
-            decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
-            query  = window.location.search.substring(1),
-            value  = null;
+    var url = {
+        params : {},
+        query  : {},
+        hash   : {
+            psp : 'upi',
+        },
+    };
 
-        urlParams = {};
+    var selectThePsp = function (psps) {
+        window.location.hash = $(psps).val();
+        url.hash.psp = $(psps).val();
+        buildUrl();
+    };
 
-        while (match = search.exec(query))
-        {
-            value = decode(match[2]).trim();
-            if (value !== '')
-                urlParams[decode(match[1])] = value;
-        }
+    var buildUrl = function () {
 
-        document.getElementById('intent').href = 'upi://pay?'+query;
-        document.getElementById('intent').innerText = query;
-    })();
+        console.log(url);
+        var query = inconf.psps[url.hash.psp].pro + '?' + url.query;
+        document.getElementById("intent").value = query;
+        document.getElementById("thelink").href = query;
+        document.getElementById("theimage").src = query;
+        document.getElementById("theimage").src = 'https://api.qrserver.com/v1/create-qr-code/?' +
+            'color=005757&data=' + query.replace(/&/g, '%26');
+    };
+
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1),
+        hash   = window.location.hash,
+        value  = null;
+
+    url.query = query;
+    url.hash.psp  = hash.slice(1) || url.hash.psp;
+
+    while (match = search.exec(query))
+    {
+        value = decode(match[2]).trim();
+        if (value !== '')
+            url.params[decode(match[1])] = value;
+    }
+    buildUrl();
 
     $(document).ready(function ()
     {
-        var elem;
-        for(var i in urlParams)
+        var f,h;
+
+        for(var i in inconf.fields)
         {
-            $('input[name="'+i+'"]').val(urlParams[i]).removeClass('do-not-include');
+            var f = inconf.fields[i];
+            var h = '<fieldset>' +
+                '<legend>'+ i +'&nbsp; <sup>('+ f.sub +') *</sup></legend>' +
+                '<input class="'+ f.cla +'" type="text" name="'+ i +'" value="'+ f.val +'" '+ f.html +'>' +
+                '</fieldset>';
+
+            $('#theformfields').append(h);
+        }
+
+        for (var i in inconf.psps)
+        {
+            var f = inconf.psps[i];
+            var s = (i == url.hash.psp) ? 'selected' : '';
+            var h = '<option value="'+ i +'" '+ s +'>'+ f.tex +'</option>';
+            $('#thepsps').append(h);
+        }
+
+        var elem;
+        for(var i in url.params)
+        {
+            $('input[name="'+i+'"]').val(url.params[i]).removeClass('do-not-include');
         }
         $('.do-not-include').attr('disabled', 'disabled');
-        $('fieldset').click(function () {
-            $(this).find('.do-not-include').removeClass('do-not-include').removeAttr('disabled');
+
+        $('#theformfields>fieldset>legend').click(function () {
+            var input = $(this).parent().find('.inputtext');
+            console.log(input, input.hasClass('do-not-include'));
+            if (input.hasClass('do-not-include'))
+            {
+                input.removeClass('do-not-include');
+                input.removeAttr('disabled');
+            }
+            else
+            {
+                input.addClass('do-not-include');
+                input.attr('disabled');
+            }
         })
     })
 
-    </script>
+</script>
 </body>
 </html>
