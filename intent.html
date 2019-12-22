@@ -32,10 +32,9 @@
         fieldset.full{
             width: 93.98%;
         }
-        fieldset sup{
+        fieldset sub{
             font-weight: normal;
             font-size: small;
-            float: right;
         }
         .inputtext {
             width: 99%;
@@ -46,14 +45,15 @@
             font-weight: bold;
         }
         .inputsubmit {
-            width: 100%;
+            width: 96%;
             padding: 5px;
             height: 40px;
             background: #248f65;
             font-size: 18px;
             color: #fff;
             border-radius: 4px;
-            border: 1px solid #67b696;
+            border: 1px solid #05432a;
+            margin: 20px 0px 0px 1%;
         }
         .do-not-include
         {
@@ -73,6 +73,7 @@
             border: none;
             font-weight: bold;
             color: #00562F;
+            min-width: 264px;
         }
         .display #intent{
             font-size: 18px;
@@ -127,13 +128,13 @@
                 tid : {
                     sub: 'NPCI Transaction id assigned from Payee PSP',
                     cla : 'inputtext do-not-include',
-                    val : 'UPIxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    val : 'UpiAbc',
                     html : '',
                 },
                 tn : {
                     sub: 'Brief details on transaction',
                     cla : 'inputtext do-not-include',
-                    val : 'anwerj@upi',
+                    val : 'PayToJunaid',
                     html : '',
                 },
                 am : {
@@ -163,7 +164,7 @@
                 url : {
                     sub: 'Short URL to invoice for transaction',
                     cla : 'inputtext do-not-include',
-                    val : 'https://github.com',
+                    val : 'https://i.anwerj.com',
                     html : '',
                 }
             }
@@ -177,16 +178,12 @@
     <select id="thepsps" class="" onchange="selectThePsp(this)"></select><br>
     <img id="theimage" src=""><br>
     <input id="intent" type="text" class="inputtext urlbox" aria-label="Text input with dropdown button"><br>
-    <a id="thelink">Fire me Now!</a>
+    <a id="thelink">Shoot the intent</a>
 </div>
 
 <form action="intent.html" id="theform" method="get" style="margin: 40px;padding: 20px; float: left">
     <div id="theformfields"></div>
-
-    <fieldset class="full">
-        <legend>Submit</legend>
-        <input class="inputsubmit" type="submit" value="submit">
-    </fieldset>
+    <input class="inputsubmit" type="submit" value="Regenerate">
 </form>
 
 <script type="text/javascript">
@@ -242,7 +239,7 @@
         {
             var f = inconf.fields[i];
             var h = '<fieldset>' +
-                '<legend>'+ i +'&nbsp; <sup>('+ f.sub +') *</sup></legend>' +
+                '<legend>'+ i +'&nbsp; <sub>'+ f.sub +'</sub></legend>' +
                 '<input class="'+ f.cla +'" type="text" name="'+ i +'" value="'+ f.val +'" '+ f.html +'>' +
                 '</fieldset>';
 
