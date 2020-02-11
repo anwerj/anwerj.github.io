@@ -82,12 +82,13 @@
             text-align: center;
             color: #00683c;
         }
-        #theimage{
+        #theimage, #theqrcode{
             margin: 10px 0 10px 0;
             border: 1px solid #258f65;
             padding: 5px;
-            width: 250px;
-            height: 250px;
+            width: 255px;
+            height: 255px;
+            display: inline-block;
         }
     </style>
     <script type="text/javascript" >
@@ -171,12 +172,13 @@
         };
     </script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="/assets/js/qrcodejs.min.js"></script>
 </head>
 <body>
 
 <div class="display">
     <select id="thepsps" class="" onchange="selectThePsp(this)"></select><br>
-    <img id="theimage" src=""><br>
+    <div id="theqrcode"></div>
     <input id="intent" type="text" class="inputtext urlbox" aria-label="Text input with dropdown button"><br>
     <a id="thelink">Shoot the intent</a>
 </div>
@@ -195,6 +197,13 @@
         },
     };
 
+    var generateQrCode = function(text) {
+        new QRCode('theqrcode', {
+            text: text,
+            colorDark: '#005757'
+        });
+    }
+
     var selectThePsp = function (psps) {
         window.location.hash = $(psps).val();
         url.hash.psp = $(psps).val();
@@ -207,9 +216,7 @@
         var query = inconf.psps[url.hash.psp].pro + '?' + url.query;
         document.getElementById("intent").value = query;
         document.getElementById("thelink").href = query;
-        document.getElementById("theimage").src = query;
-        document.getElementById("theimage").src = 'https://api.qrserver.com/v1/create-qr-code/?' +
-            'color=005757&data=' + query.replace(/&/g, '%26');
+        generateQrCode(query);
     };
 
     var match,
