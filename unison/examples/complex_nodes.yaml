@@ -1,0 +1,8 @@
+---
+nodes:
+  node1: {label: Node One}
+  node2: {label: Node Two, fontawesome: trash}
+
+edges:
+  - to: {$ref: node2, id: node2-1, label: The very good level with no issues}
+    from: node1
