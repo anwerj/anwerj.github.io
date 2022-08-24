@@ -94,11 +94,12 @@
                 keyboardHandler : 'vim',
                 fontSize: '13px',
             });
-            editor.container.style.lineHeight = 2
-            editor.renderer.updateFontSize()
+            editor.container.style.lineHeight = 2;
+            editor.renderer.updateFontSize();
+            editor.setBehavioursEnabled(true);
 
             run();
-        }
+        };
 
         var refresh = function(remote, force)
         {
@@ -141,7 +142,7 @@
 
                 loadEditor(data);
             });
-        }
+        };
 
         var setUrl = function(url)
         {
