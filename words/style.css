@@ -16,6 +16,13 @@ html {
     /* Sky blue */
 }
 
+#game-container i {
+    position: absolute;
+    font-size: 5rem;
+    color: #000;
+    animation: colorChange 5s linear infinite;
+}
+
 #fullscreen-btn {
     position: absolute;
     top: 10px;
@@ -75,6 +82,8 @@ html {
     color: white;
     animation: colorChange 5s linear infinite;
 }
+
+
 
 @keyframes colorChange {
 
