@@ -44,6 +44,23 @@ html {
     padding: 0 1rem;
 }
 
+.box a {
+    color: inherit;
+    text-decoration: none;
+}
+.box a:hover {
+    text-decoration: underline;
+}
+.box a:focus {
+    outline: 2px solid #FFD700; /* Gold */
+    outline-offset: 2px;
+}
+.box a:focus-visible {
+    outline: 2px solid #76FFB6; /* Mint Green */
+    outline-offset: 2px;
+}
+
+
 /* Layout */
 .box:nth-child(1),
 .box:nth-child(2) {

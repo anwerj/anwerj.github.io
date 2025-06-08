@@ -123,9 +123,10 @@ boxes.forEach((boxData) => {
     div.style.color = fg;
 
     // Fill in content
-    div.innerHTML = `
-    <h2>${boxData.title}</h2>
-    <p>${boxData.description}</p>
+    div.innerHTML = `<a href="${boxData.link}" class="box-link">
+        <h2>${boxData.title}</h2>
+        <p>${boxData.description}</p>
+    </a>
   `;
 
     container.appendChild(div);
