@@ -1,5 +1,5 @@
 const boxes = [
-    { title: "About Me", link: "#", description: "Software engineer by profession,<br> engineer at heart,<br> deeply curious about cosmology and <br>fond of the occasional fantasy escape." },
+    { title: "About Me", link: "/work", description: "Software engineer by profession,<br> engineer at heart,<br> deeply curious about cosmology and <br>fond of the occasional fantasy escape." },
     { title: "UPI Intent", link: "/intent", description: "A tool to create an Intent Link, QR Code and test these" },
     { title: "Unison", link: "/unison", description: "A dreamy approach to create flow diagrams" },
     { title: "Words Game", link: "/words", description: "Something to teach kids about Alphabets" },
