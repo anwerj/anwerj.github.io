@@ -1,0 +1,170 @@
+/* Classic Theme */
+.theme-classic {
+    font-family: "PT Sans Narrow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #828282;
+    background-color: #fff;
+    padding: 1.2rem;
+    font-size: 1em; /* was 15px, now 0.9em */
+    line-height: 1.4;
+}
+
+.theme-classic h1,
+.theme-classic h2 {
+    color: #000;
+}
+
+.theme-classic h1 {
+    color : #333;
+    font-size: 1.6em; /* was 1.7em */
+    margin: 0.4em 0 0.2em 0;
+}
+
+.theme-classic h2 {
+    color : #333;
+    font-size: 1.1em; /* was 1.2em */
+    margin: 0.6em 0 0.15em 0;
+}
+
+.theme-classic h3 {
+    color: #333;
+    font-size: 1em; /* was 1em */
+    margin: 0.4em 0 0.15em 0;
+}
+
+.theme-classic p,
+.theme-classic ul {
+    margin: 0.2em 0 0.2em 1.2em;
+}
+
+.theme-classic ul {
+    padding-left: 1.2em;
+}
+
+.theme-classic li {
+    margin-bottom: 0.1em;
+}
+
+.theme-classic .text-muted {
+    color: #6c757d !important; /* Muted gray for light background */
+    opacity: 0.85;
+}
+
+.theme-classic strong {
+    color: #333 !important; /* Strong text in classic theme */
+}
+
+.theme-classic a,
+.theme-classic a:visited {
+    color: #828282; /* Same as normal text */
+    text-decoration: none;
+}
+
+/* Terminal Theme */
+.theme-terminal {
+    font-family: monospace;
+    background: #000;
+    color: #33ff33;
+    padding: 1.2rem;
+    font-size: 0.9em; /* was 15px, now 0.9em */
+    line-height: 1.4;
+}
+
+.theme-terminal h1,
+.theme-terminal h2 {
+    color: #00ffff;
+}
+
+.theme-terminal h1 {
+    font-size: 1.6em; /* was 1.7em */
+    margin: 0.4em 0 0.2em 0;
+}
+
+.theme-terminal h2 {
+    font-size: 1.1em; /* was 1.2em */
+    margin: 0.3em 0 0.15em 0;
+}
+
+.theme-terminal h3 {
+    font-size: 0.9em; /* was 1em */
+    margin: 0.3em 0 0.15em 0;
+}
+
+.theme-terminal p,
+.theme-terminal ul {
+    margin: 0.2em 0 0.2em 1.2em;
+}
+
+.theme-terminal ul {
+    padding-left: 1.2em;
+}
+
+.theme-terminal li {
+    margin-bottom: 0.1em;
+}
+
+.theme-terminal .text-muted {
+    color: #00b386 !important; /* Muted greenish-cyan for terminal look */
+    opacity: 0.7;
+}
+
+.theme-terminal a,
+.theme-terminal a:visited {
+    color: #33ff33; /* Same as normal text */
+    text-decoration: none;
+}
+
+/* Code Theme */
+.theme-code {
+    font-family: 'Fira Code', monospace;
+    background-color: #1e1e1e;
+    color: #dcdcdc;
+    padding: 1.2rem;
+    font-size: 0.9em; /* was 15px, now 0.9em */
+    line-height: 1.4;
+}
+
+.theme-code h1,
+.theme-code h2 {
+    color: #569cd6;
+}
+
+.theme-code h1 {
+    font-size: 1.6em; /* was 1.7em */
+    margin: 0.4em 0 0.2em 0;
+}
+
+.theme-code h2 {
+    font-size: 1.1em; /* was 1.2em */
+    margin: 0.3em 0 0.15em 0;
+}
+
+.theme-code h3 {
+    font-size: 0.9em; /* was 1em */
+    margin: 0.3em 0 0.15em 0;
+}
+
+.theme-code p,
+.theme-code ul {
+    margin: 0.2em 0 0.2em 1.2em;
+}
+
+.theme-code ul {
+    padding-left: 1.2em;
+}
+
+.theme-code li {
+    margin-bottom: 0.1em;
+}
+
+.theme-code .text-muted {
+    color: #8a8a8a !important; /* Muted gray for dark background */
+    opacity: 0.8;
+}
+
+.theme-code a,
+.theme-code a:visited {
+    color: #dcdcdc; /* Same as normal text */
+    text-decoration: none;
+}

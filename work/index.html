@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>My Resume</title>
+    <link id="theme-style" rel="stylesheet" href="style/resume.css">
+    <link rel="stylesheet" href="style/themes.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script defer src="scripts/resume.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="theme-classic">
+    <div>
+        Theme:
+        <select id="theme-selector">
+            <option value="classic">Classic</option>
+            <option value="terminal">Terminal</option>
+            <option value="code">Code</option>
+        </select>
+    </div>
+
+    <div id="resume">
+        <div id="header"></div>
+        <div id="content">
+            <div class="resume-loading">
+                <span class="loading-text">Resume is loading</span>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
